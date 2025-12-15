@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Détails Animal</title>
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616408.png">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>🌿 Wildlife Explorer</h1>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="gallery.html">Galerie</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+<section class="details reveal">
+  <h2 id="animalName">Animal</h2>
+  <img id="animalImg" src="" alt="Animal" style="width:100%;max-width:600px;border-radius:15px;margin-top:20px;">
+  <p id="animalDesc" style="margin-top:15px;font-size:16px;color:#ccc;"></p>
+</section>
+</main>
+
+<footer>
+  © 2025 Wildlife Explorer – Med Hedi Amine Jendoubi
+</footer>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const animal = params.get('animal');
+
+const animalData = {
+  "Tigre": {
+    img:"https://images.unsplash.com/photo-1601758123927-3a1d1dbf0c4c?auto=format&fit=crop&w=800&q=80",
+    desc:"Le tigre du Bengale est puissant et majestueux."
+  },
+  "Éléphant": {
+    img:"https://images.unsplash.com/photo-1595433562696-1d3aa74b2b1f?auto=format&fit=crop&w=800&q=80",
+    desc:"L'éléphant d’Afrique est le plus grand animal terrestre."
+  },
+  "Aigle": {
+    img:"https://images.unsplash.com/photo-1570073101531-7e8a7f91d26a?auto=format&fit=crop&w=800&q=80",
+    desc:"L’aigle royal est le maître du ciel avec une vue exceptionnelle."
+  }
+};
+
+if(animal && animalData[animal]){
+  document.getElementById('animalName').textContent = animal;
+  document.getElementById('animalImg').src = animalData[animal].img;
+  document.getElementById('animalDesc').textContent = animalData[animal].desc;
+} else {
+  document.getElementById('animalName').textContent = "Animal inconnu";
+  document.getElementById('animalImg').style.display = "none";
+  document.getElementById('animalDesc').textContent = "Désolé, aucune information disponible.";
+}
+</script>
+</body>
+</html>
